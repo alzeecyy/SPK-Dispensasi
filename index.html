@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPK Dispensasi Mahasiswa — SAW</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">SPK TITIK</span>
+        <span class="logo-badge">SAW</span>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-tabs">
+        <div class="nav-tab active" onclick="goPage('beranda')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Beranda</span>
+        </div>
+        <div class="nav-tab" id="tab-input" onclick="goPage('input')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path>
+          </svg>
+          <span>Input Data</span>
+        </div>
+        <div class="nav-tab disabled" id="tab-hitung" onclick="goPage('hitung')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="4" y1="9" x2="20" y2="9"></line>
+            <line x1="4" y1="15" x2="20" y2="15"></line>
+            <line x1="10" y1="3" x2="14" y2="21"></line>
+          </svg>
+          <span>Perhitungan</span>
+        </div>
+        <div class="nav-tab disabled" id="tab-hasil" onclick="goPage('hasil')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Hasil</span>
+        </div>
+        <div class="nav-tab" onclick="goPage('tentang')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span>Tentang</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== BERANDA ==================== -->
+  <div class="page active" id="page-beranda">
+    <div class="beranda-grid">
+      <!-- Hero Card -->
+      <div class="hero">
+        <div class="hero-badge">SISTEM PENDUKUNG KEPUTUSAN DISPENSASI</div>
+        <h1>SISTEM PENDUKUNG<br>KEPUTUSAN<br><span class="hero-highlight">DISPENSASI</span></h1>
+        <p>Sistem berbasis metode Simple Additive Weighting (SAW) untuk membantu pengambil keputusan menilai kelayakan
+          pengajuan dispensasi akademik mahasiswa secara objektif, transparan, dan terukur.</p>
+        <div class="hero-buttons">
+          <button class="btn-start" onclick="goPage('input')">
+            Mulai Penilaian
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="btn-sec btn-hero-sec" onclick="goPage('tentang')">
+            Lihat Dokumentasi
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Stack -->
+      <div class="stats-stack">
+        <div class="stat-card stat-lilac">
+          <div>
+            <div class="stat-badge">TOTAL KRITERIA</div>
+            <div class="stat-val">06</div>
+          </div>
+          <div class="stat-desc">Metrik evaluasi standar untuk semua jenis kegiatan mahasiswa.</div>
+        </div>
+        <div class="stat-card stat-lime">
+          <div>
+            <div class="stat-badge">SKALA BOBOT</div>
+            <div class="stat-val">1–5</div>
+          </div>
+          <div class="stat-desc">Tingkat prioritas terperinci untuk perhitungan SAW yang akurat.</div>
+        </div>
+        <div class="stat-card stat-dark">
+          <div>
+            <div class="stat-badge">METODOLOGI</div>
+            <div class="stat-val">SAW</div>
+          </div>
+          <div class="stat-desc">Pembobotan aditif linier untuk hasil yang objektif.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Data Kriteria Penilaian</div>
+      <div class="tbl-wrap">
+        <table class="criteria-table">
+          <thead>
+            <tr>
+              <th>Kode</th>
+              <th>Kriteria</th>
+              <th>Atribut</th>
+              <th>Bobot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>C1</td>
+              <td>Jenis Kegiatan</td>
+              <td><span class="badge badge-benefit">Benefit</span></td>
+              <td><span class="badge badge-acc">25%</span></td>
+            </tr>
+            <tr>
+              <td>C2</td>
+              <td>Legalitas Dokumen</td>
+              <td><span class="badge badge-benefit">Benefit</span></td>
+              <td><span class="badge badge-acc">25%</span></td>
+            </tr>
+            <tr>
+              <td>C3</td>
+              <td>Riwayat Tujuan Dispensasi</td>
+              <td><span class="badge badge-benefit">Benefit</span></td>
+              <td><span class="badge badge-acc">10%</span></td>
+            </tr>
+            <tr>
+              <td>C4</td>
+              <td>IPK Mahasiswa</td>
+              <td><span class="badge badge-benefit">Benefit</span></td>
+              <td><span class="badge badge-acc">15%</span></td>
+            </tr>
+            <tr>
+              <td>C5</td>
+              <td>Durasi Ketidakhadiran</td>
+              <td><span class="badge badge-cost">Cost</span></td>
+              <td><span class="badge badge-acc">10%</span></td>
+            </tr>
+            <tr>
+              <td>C6</td>
+              <td>Jumlah Matkul Terdampak</td>
+              <td><span class="badge badge-cost">Cost</span></td>
+              <td><span class="badge badge-acc">15%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== INPUT DATA ==================== -->
+  <div class="page" id="page-input">
+    <div class="page-eyebrow">Input Data</div>
+    <div class="page-title">Pengisian Formulir Penilaian</div>
+    <div class="page-sub" style="margin-bottom:1.5rem">Jawab 6 pertanyaan berikut sesuai kondisi pengajuan dispensasi.
+      Setiap pertanyaan mewakili satu kriteria penilaian.</div>
+
+    <div class="progress-wrap">
+      <div class="progress-track">
+        <div class="progress-fill" id="prog" style="width:0%"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="prog-label">Pertanyaan 1 dari 6</span>
+        <span id="prog-pct">0%</span>
+      </div>
+    </div>
+
+    <div id="q-area"></div>
+
+    <div class="nav-row">
+      <button class="btn-sec" id="btn-prev" onclick="prevQ()" disabled>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Sebelumnya
+      </button>
+      <button class="btn-sec" id="btn-next" onclick="nextQ()" disabled>
+        Selanjutnya
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button class="btn-pri" id="btn-hitung" onclick="doHitung()" style="display:none" disabled>
+        Lihat Perhitungan
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== PERHITUNGAN ==================== -->
+  <div class="page" id="page-hitung">
+    <div class="page-eyebrow">Perhitungan</div>
+    <div class="page-title">Proses SAW Langkah demi Langkah</div>
+    <div class="page-sub" style="margin-bottom:2rem">Berikut adalah seluruh tahapan perhitungan metode SAW berdasarkan
+      data yang telah diinputkan.</div>
+
+    <div id="hitung-content">
+      <div class="empty-state">
+        <div class="empty-icon">⚙️</div>
+        <p>Lengkapi Input Data terlebih dahulu untuk melihat perhitungan.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HASIL ==================== -->
+  <div class="page" id="page-hasil">
+    <div class="page-eyebrow">Hasil</div>
+    <div class="page-title">Rekomendasi Kelayakan Dispensasi</div>
+    <div class="page-sub" style="margin-bottom:1.5rem">Hasil perhitungan nilai preferensi SAW berdasarkan 6 kriteria
+      yang telah dinilai.</div>
+    <div id="hasil-content">
+      <div class="empty-state">
+        <div class="empty-icon">📊</div>
+        <p>Belum ada data. Silakan lengkapi Input Data terlebih dahulu.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TENTANG ==================== -->
+  <div class="page" id="page-tentang">
+    <div class="page-eyebrow">Tentang</div>
+    <div class="page-title">SPK Dispensasi Mahasiswa</div>
+    <div class="page-sub" style="margin-bottom:2rem">Sistem Pendukung Keputusan berbasis metode SAW untuk Universitas
+      Jenderal Soedirman.</div>
+
+    <div class="about-section">
+      <div class="about-title">Latar Belakang</div>
+      <div class="method-box">
+        <p>Dispensasi akademik adalah izin resmi yang diberikan kepada mahasiswa untuk tidak mengikuti perkuliahan
+          karena mengikuti kegiatan tertentu yang diakui kampus. Banyaknya pengajuan dispensasi setiap semester menjadi
+          tantangan bagi akademisi untuk menilainya secara konsisten dan objektif.</p>
+        <p style="margin-top:0.85rem">Sistem ini menggunakan metode SAW (Simple Additive Weighting) untuk memberikan
+          rekomendasi berbasis data dari 6 kriteria yang telah disepakati, sehingga proses penilaian menjadi lebih
+          terstruktur, transparan, dan dapat dipertanggungjawabkan.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="about-section">
+      <div class="about-title">Tentang Metode SAW</div>
+      <div class="method-box">
+        <h3>Simple Additive Weighting (SAW)</h3>
+        <p>SAW adalah metode pengambilan keputusan multikriteria yang bekerja dengan menormalkan matriks keputusan
+          terhadap semua alternatif, lalu mengalikan nilai ternormalisasi dengan bobot masing-masing kriteria untuk
+          menghasilkan nilai preferensi akhir.</p>
+        <div class="method-steps">
+          <div class="method-step">
+            <div class="method-step-num">1</div>
+            <p><strong>Matriks keputusan</strong> — Nilai setiap kriteria dikumpulkan dan disusun dalam matriks X.</p>
+          </div>
+          <div class="method-step">
+            <div class="method-step-num">2</div>
+            <p><strong>Normalisasi</strong> — Benefit: r = x / max(x). Cost: r = min(x) / x. Dalam sistem ini max = 5
+              dan min = 1.</p>
+          </div>
+          <div class="method-step">
+            <div class="method-step-num">3</div>
+            <p><strong>Nilai preferensi</strong> — Vi = Σ(wj × rij). Nilai tertinggi menunjukkan kelayakan terbaik.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="about-section">
+      <div class="about-title">Informasi Sistem</div>
+      <div class="card">
+        <table class="criteria-table">
+          <tr>
+            <td style="color:var(--text-muted);width:160px">Nama sistem</td>
+            <td style="font-weight:500">SPK Dispensasi Mahasiswa</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Metode</td>
+            <td style="font-weight:500">Simple Additive Weighting (SAW)</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Institusi</td>
+            <td style="font-weight:500">Universitas Jenderal Soedirman</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Fakultas</td>
+            <td style="font-weight:500">Fakultas Teknik — Informatika</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Jumlah kriteria</td>
+            <td style="font-weight:500">6 kriteria</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="about-section">
+      <div class="about-title">Tim Pengembang</div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">A</div>
+          <div class="team-name">Melysa Ayu Wulansari</div>
+          <div class="team-nim">NIM: H1D024013</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">B</div>
+          <div class="team-name">Pancar Wahyu Setiabi</div>
+          <div class="team-nim">NIM: H1D024018</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">C</div>
+          <div class="team-name">Cut Alzeena Rency Fadania</div>
+          <div class="team-nim">NIM: H1D024037</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
