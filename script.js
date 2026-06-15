@@ -75,7 +75,7 @@ function goPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  const tabMap = { beranda: 0, input: 1, hitung: 2, hasil: 3, tentang: 4 };
+  const tabMap = { beranda: 0, input: 1, hitung: 2, hasil: 3, contoh: 4, tentang: 5 };
   document.querySelectorAll('.nav-tab')[tabMap[id]].classList.add('active');
   window.scrollTo(0, 0);
 }
