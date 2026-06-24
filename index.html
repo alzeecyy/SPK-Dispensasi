@@ -186,44 +186,78 @@
   <!-- ==================== INPUT DATA ==================== -->
   <div class="page" id="page-input">
     <div class="page-eyebrow">Input Data</div>
-    <div class="page-title">Pengisian Formulir Penilaian</div>
-    <div class="page-sub" style="margin-bottom:1.5rem">Jawab 6 pertanyaan berikut sesuai kondisi pengajuan dispensasi.
-      Setiap pertanyaan mewakili satu kriteria penilaian.</div>
+    <div class="page-title" id="input-page-title">Daftar Mahasiswa yang Dinilai</div>
+    <div class="page-sub" id="input-page-sub" style="margin-bottom:1.5rem">Tentukan alternatif mahasiswa yang ingin dinilai kelayakan dispensasinya (maksimal 5).</div>
 
-    <div class="progress-wrap">
-      <div class="progress-track">
-        <div class="progress-fill" id="prog" style="width:0%"></div>
+    <!-- SETUP CONTAINER (MANAGE STUDENTS) -->
+    <div id="setup-container" class="card" style="animation: pageFadeIn 0.3s ease;">
+      <div class="section-title">Daftar Alternatif Mahasiswa</div>
+      <p class="page-sub" style="margin-bottom: 1.5rem; font-size: 14px;">
+        Tambahkan hingga maksimal 5 mahasiswa untuk dinilai dan dibandingkan kelayakannya menggunakan metode SAW.
+      </p>
+      <div id="students-list-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem;">
+        <!-- Dynamic list of student inputs will go here -->
       </div>
-      <div class="progress-meta">
-        <span id="prog-label">Pertanyaan 1 dari 6</span>
-        <span id="prog-pct">0%</span>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="btn-sec" id="btn-add-student" onclick="addStudentRow()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Tambah Mahasiswa
+        </button>
+        <button class="btn-pri" onclick="startWizard()">
+          Mulai Penilaian →
+        </button>
       </div>
     </div>
 
-    <div id="q-area"></div>
+    <!-- WIZARD CONTAINER (QUESTIONS) -->
+    <div id="wizard-container" style="display:none; animation: pageFadeIn 0.35s ease;">
+      <!-- Wizard Header Card (Active Student) -->
+      <div class="wizard-header-card">
+        <span style="font-weight: 700; color: var(--primary-dark); font-size: 15px; display: flex; align-items: center; gap: 8px;">
+          <span class="logo-dot" style="margin-top: 2px;"></span>
+          Menilai Mahasiswa: <span id="current-student-name" style="color: var(--text)">-</span>
+        </span>
+        <span class="badge badge-acc" id="current-student-badge">Mahasiswa 1 dari 1</span>
+      </div>
 
-    <div class="nav-row">
-      <button class="btn-sec" id="btn-prev" onclick="prevQ()" disabled>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-        Sebelumnya
-      </button>
-      <button class="btn-sec" id="btn-next" onclick="nextQ()" disabled>
-        Selanjutnya
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </button>
-      <button class="btn-pri" id="btn-hitung" onclick="doHitung()" style="display:none" disabled>
-        Lihat Perhitungan
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </button>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="prog" style="width:0%"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="prog-label">Pertanyaan 1 dari 6</span>
+          <span id="prog-pct">0%</span>
+        </div>
+      </div>
+
+      <div id="q-area"></div>
+
+      <div class="nav-row">
+        <button class="btn-sec" id="btn-prev" onclick="prevQ()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          Sebelumnya
+        </button>
+        <button class="btn-sec" id="btn-next" onclick="nextQ()">
+          Selanjutnya
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="btn-pri" id="btn-hitung" onclick="doHitung()" style="display:none">
+          Lihat Perhitungan
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
